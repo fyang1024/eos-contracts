@@ -8,6 +8,7 @@ class [[eosio::contract("hello")]] hello: public contract {
 
         [[eosio::action]]
         void hi(name user) {
+            require_auth(user);
             print("Hello, ", name{user});
         }
 };
