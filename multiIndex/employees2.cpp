@@ -32,6 +32,13 @@ void print_by_name(const employee_set& es) {
     }
 }
 
+void print_by_id(const employee_set& es) {
+    const employee_set::nth_index<0>::type& id_index = es.get<0>();
+    for(auto l : id_index) {
+        std::cout << l.name << ' ' << l.id << std::endl;
+    }
+}
+
 int main() {
     employee_set employees;
 
@@ -44,4 +51,5 @@ int main() {
     employees.insert({3, "alice"});
 
     print_by_name(employees);
+    print_by_id(employees);
 }
